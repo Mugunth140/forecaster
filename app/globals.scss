@@ -1,0 +1,56 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Define SCSS variables for light mode
+$primary: #ffffff;
+$secondary: #000000;
+
+// Define SCSS variables for dark mode
+$dark-primary: #000000;
+$dark-secondary: #ffffff;
+
+// Mixin for light mode
+@mixin light-mode {
+  background-color: $primary;
+  color: $secondary;
+}
+
+// Mixin for dark mode
+@mixin dark-mode {
+  background-color: $dark-primary;
+  color: $dark-secondary;
+}
+
+
+body {
+  @include light-mode;
+}
+
+.dark-mode {
+  body {
+    @include dark-mode;
+  }
+}
+
+
+/* gradient animation */
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradientAnimation 20s linear infinite;
+    background-size: 200% 200%;
+  }

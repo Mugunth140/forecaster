@@ -1,5 +1,5 @@
 'use client'
-import Navbar from '@/app/components/Navbar';
+import Navbar from '@/app/components/Navbar/Navbar';
 import { useState, useEffect } from "react";
 
 function Home() {
@@ -23,11 +23,11 @@ function Home() {
       {weather && (
         <>
         <Navbar />
-      <div className="container min-h-screen bg-gradient-to-r from-[#62cff4] to-[#2c67f2] animate-gradient">
-        <div className="text-white text-center">
-          <h2 className="text-4xl font-semibold mb-4">Weather in {city}</h2>
-          <p className="text-2xl">Temperature: {weather.main.temp} °C</p>
-          <p className="text-lg">Description: {weather.weather[0].description}</p>
+       <div className="bg-gradient-to-r from-[#62cff4] to-[#2c67f2]">
+        <div >
+          <h2 >Weather in {city}</h2>
+          <p >Temperature: {weather.main.temp} °C</p>
+          <p >Description: {weather.weather[0].description}</p>
         </div>
     </div>
     </>
