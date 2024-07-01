@@ -16,18 +16,19 @@ const Darkmode = () => {
 
   return (
     <div className={styles.toggleSwitch}>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        id="darkModeToggle"
-        checked={darkMode}
-        onChange={() => setDarkMode(!darkMode)}
-      />
-      <label className={styles.label} htmlFor="darkModeToggle">
-        <span className={styles.inner} />
-        <span className={styles.switch} />
-      </label>
-    </div>
+    <input
+      type="checkbox"
+      className={styles.checkbox}
+      id="darkModeToggle"
+      checked={darkMode}
+      onChange={() => setDarkMode(!darkMode)}
+    />
+    <label className={styles.label} htmlFor="darkModeToggle">
+      <span className={styles.sun}></span>
+      <span className={styles.moon}></span>
+      <span className={styles.switch} />
+    </label>
+  </div>
   );
 };
 

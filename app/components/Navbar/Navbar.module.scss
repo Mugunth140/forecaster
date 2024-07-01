@@ -1,0 +1,46 @@
+@import '../../scss/variables';
+
+.navContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100vw;
+    height: auto;
+    padding: 1.5em;
+
+    .navLocationContainer{
+        display: flex;
+        align-items: center;
+        font-size: 1.1em;
+
+        .navLocation{
+        //    color: rgb(235, 44, 44);
+           font-size: 2em;
+        }
+    }
+    .navSearch{
+        display: flex;
+
+        input{
+            max-width: 25vw;
+            width: 23vw;
+            background-color: transparent;
+            padding: 0.8em;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border: 1.5px solid $grey;
+        }
+
+        & > button{
+            @include flex-align;
+            width: 3.5vw;
+            border: 1.5px solid $grey;
+            border-top-right-radius:25px;
+            border-bottom-right-radius:25px;
+
+            & > svg {
+                font-size: 1.3em;
+            }
+        }
+    }
+}

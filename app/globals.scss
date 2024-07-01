@@ -2,28 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter',sans-serif;
 }
 
-// Define SCSS variables for light mode
-$primary: #ffffff;
-$secondary: #000000;
-
-// Define SCSS variables for dark mode
-$dark-primary: #000000;
-$dark-secondary: #ffffff;
-
-// Mixin for light mode
-@mixin light-mode {
-  background-color: $primary;
-  color: $secondary;
-}
-
-// Mixin for dark mode
-@mixin dark-mode {
-  background-color: $dark-primary;
-  color: $dark-secondary;
-}
-
+@import './scss/variables.scss';
 
 body {
   @include light-mode;
