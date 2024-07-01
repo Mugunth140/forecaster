@@ -1,11 +1,13 @@
-// Define SCSS variables for light mode
-$primary: #fffdfd;
-$secondary: #000000;
-$grey: rgb(195, 195, 195);
+
+// Define SCSS variables using HSL
+$primary: hsl(0, 100%, 99%);
+$secondary: hsl(0, 0%, 0%);
+$grey: hsl(0, 0%, 76.5%);
+$accent:rgb(25, 91, 233);
 
 // Define SCSS variables for dark mode
-$dark-primary: #000000;
-$dark-secondary: #ffffff;
+$dark-primary: hsl(0, 0%, 12%);
+$dark-secondary: hsl(0, 0%, 100%);
 
 // Mixin for light mode
 @mixin light-mode {
@@ -19,8 +21,9 @@ $dark-secondary: #ffffff;
   color: $dark-secondary;
 }
 
-@mixin flex-align {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// Mixin for flexbox
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

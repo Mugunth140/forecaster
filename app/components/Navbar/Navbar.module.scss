@@ -1,46 +1,161 @@
 @import '../../scss/variables';
 
+// .navContainer {
+//     display: grid;
+//     grid-template-columns: 1fr 3fr 1fr;
+//     justify-items: center;
+//     align-items: center;
+//     min-width: 100vw;
+//     height: auto;
+//     padding: 1.5em;
+
+//     .navLocationContainer {
+//         display: flex;
+//         align-items: center;
+//         font-size: 1.1em;
+
+//         .navLocation {
+//             color: rgb(235, 44, 44);
+//             font-size: 2em;
+//         }
+//     }
+
+//     .navSearch {
+//         display: flex;
+
+//         input {
+//             width: 30vw;
+//             min-width: 250px;
+//             color: inherit;
+//             background-color: transparent;
+//             padding: 0.8em 1em;
+//             border-top-left-radius: 25px;
+//             border-bottom-left-radius: 25px;
+//             border: 1.5px solid $grey;
+//             font-size: 1em;
+//             text-transform: capitalize;
+//         }
+
+//         & > :focus, :active{
+//             outline: 1px solid transparent;
+//         }
+
+//         & > button {
+//             @include flex;
+//             width: 4em;
+//             min-width: 50px;
+//             max-width: 3.5vw;
+//             background: $grey;
+//             border: 1.5px solid $grey;
+//             border-top-right-radius: 25px;
+//             border-bottom-right-radius: 25px;
+
+//             & > svg {
+//                 font-size: 1.3em;
+//                 transition: all 0.4s ease;
+//             }
+
+//             :hover{
+//                 font-size: 1.5em;
+//                 transition: all 0.2s ease;
+//             }
+//         }
+//     }
+// }
+
 .navContainer{
+   section {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    min-width: 100vw;
-    height: auto;
-    padding: 1.5em;
+    padding: 1em 1.5em;
 
     .navLocationContainer{
-        display: flex;
-        align-items: center;
-        font-size: 1.1em;
+        @include flex;
+        font-size: 1em;
+        font-weight: 600;
+        gap: 0.2em;
 
-        .navLocation{
-        //    color: rgb(235, 44, 44);
-           font-size: 2em;
+        .navLocation {
+            font-size: 1em;
+            color: rgb(236, 60, 60);
         }
     }
-    .navSearch{
-        display: flex;
+   }
 
-        input{
-            max-width: 25vw;
-            width: 23vw;
-            background-color: transparent;
-            padding: 0.8em;
-            border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
-            border: 1.5px solid $grey;
+   .navSearch{
+    @include flex;
+    padding: 0.5em;
+
+    input {
+        color: inherit;
+        width:80%;
+        padding: 1em 2em;
+        text-transform: capitalize;
+        font-size: 1em;
+        border: 1.5px solid $grey;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        background: transparent;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    button {
+        @include flex;
+        width: 15%;
+        border: 1.5px solid $grey;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        padding: 1.4em;
+        
+        svg {
+            font-size: 1.1em;
+        }
+    }
+   }
+}
+
+
+@media (min-width: 768px) {
+
+    .navContainer {
+        section {
+            padding: 2.5em 5em;
         }
 
-        & > button{
-            @include flex-align;
-            width: 3.5vw;
-            border: 1.5px solid $grey;
-            border-top-right-radius:25px;
-            border-bottom-right-radius:25px;
+        aside {
+            position: absolute;
+            top: 3%;
+            left: 35%;
+            transform: translate(-50% -50%);
 
-            & > svg {
-                font-size: 1.3em;
+            .navSearch{
+                input {
+                    width: 30vw;
+                    min-width: 250px;
+                }
+
+                button {
+                    width: 5vw;
+                    padding: 1em;
+
+                    svg {
+                        font-size: 1.8em;
+                    }
+                }
+
+                :hover {
+
+                    svg {
+                        color: $accent;
+                    }
+                }
             }
         }
     }
+
 }
+

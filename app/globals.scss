@@ -5,7 +5,7 @@
   font-family: 'Inter',sans-serif;
 }
 
-@import './scss/variables.scss';
+@import './scss/variables';
 
 body {
   @include light-mode;
