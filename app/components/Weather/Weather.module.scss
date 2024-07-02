@@ -1,0 +1,27 @@
+@import '../../scss/variables.scss';
+
+.container {
+    position: relative;
+    height: 95vh;
+    width: 90%;
+    background: linear-gradient(to right, #62cff4, #2c67f2);
+    border-top-left-radius: 4em;
+    border-top-right-radius: 4em;
+    @include flex;
+    flex-direction: column;
+    
+}
+
+@media (min-width: 768px) {
+    .container {
+        position: relative;
+        height: 95vh;
+        width: 90%;
+        background: linear-gradient(to right, #62cff4, #2c67f2);
+        border-top-left-radius: 4em;
+        border-top-right-radius: 4em;
+        @include flex;
+        flex-direction: column;
+        
+    }
+}

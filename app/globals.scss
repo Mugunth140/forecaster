@@ -10,13 +10,11 @@
 body {
   @include light-mode;
 }
-
 .dark-mode {
   body {
     @include dark-mode;
   }
 }
-
 
 /* gradient animation */
 
@@ -36,3 +34,9 @@ body {
     animation: gradientAnimation 20s linear infinite;
     background-size: 200% 200%;
   }
+
+  .weatherContainer{
+    @include flex;
+    //height: 100vh;
+  }
+

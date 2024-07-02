@@ -1,5 +1,6 @@
 'use client'
 import Navbar from '@/app/components/Navbar/Navbar';
+import Weather from './components/Weather/Weather';
 import { useState } from "react";
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   const handleCitySubmit = () => {
-    if (city) { // Only fetch weather if city is provided
+    if (city) {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
       fetch(url)
@@ -27,14 +28,10 @@ function Home() {
   return (
     <>
       <Navbar onCity={handleCityChange} onCitySubmit={handleCitySubmit} />
-      <div className="bg-gradient-to-r from-[#62cff4] to-[#2c67f2]">
+      <div className="weatherContainer">
         {weather && weather.main && weather.weather && weather.weather[0] && (
-          <div>
-            <h2>Weather in {city}</h2>
-            <p>Temperature: {weather.main.temp} °C</p>
-            <p>Description: {weather.weather[0].description}</p>
-          </div>
-        )}
+          <Weather  city={city} weather={weather}/>
+        )} 
       </div>
     </>
   );

@@ -1,69 +1,18 @@
 @import '../../scss/variables';
 
-// .navContainer {
-//     display: grid;
-//     grid-template-columns: 1fr 3fr 1fr;
-//     justify-items: center;
-//     align-items: center;
-//     min-width: 100vw;
-//     height: auto;
-//     padding: 1.5em;
-
-//     .navLocationContainer {
-//         display: flex;
-//         align-items: center;
-//         font-size: 1.1em;
-
-//         .navLocation {
-//             color: rgb(235, 44, 44);
-//             font-size: 2em;
-//         }
-//     }
-
-//     .navSearch {
-//         display: flex;
-
-//         input {
-//             width: 30vw;
-//             min-width: 250px;
-//             color: inherit;
-//             background-color: transparent;
-//             padding: 0.8em 1em;
-//             border-top-left-radius: 25px;
-//             border-bottom-left-radius: 25px;
-//             border: 1.5px solid $grey;
-//             font-size: 1em;
-//             text-transform: capitalize;
-//         }
-
-//         & > :focus, :active{
-//             outline: 1px solid transparent;
-//         }
-
-//         & > button {
-//             @include flex;
-//             width: 4em;
-//             min-width: 50px;
-//             max-width: 3.5vw;
-//             background: $grey;
-//             border: 1.5px solid $grey;
-//             border-top-right-radius: 25px;
-//             border-bottom-right-radius: 25px;
-
-//             & > svg {
-//                 font-size: 1.3em;
-//                 transition: all 0.4s ease;
-//             }
-
-//             :hover{
-//                 font-size: 1.5em;
-//                 transition: all 0.2s ease;
-//             }
-//         }
-//     }
-// }
-
 .navContainer{
+    // background: lightblue;
+  
+
+    .hero{
+          position: absolute;
+
+        h1{
+            margin-top: 70px;
+            font-size: 2.5rem;
+            text-align:center;
+        }
+    }
    section {
     display: flex;
     justify-content: space-between;
@@ -77,10 +26,13 @@
         gap: 0.2em;
 
         .navLocation {
-            font-size: 1em;
-            color: rgb(236, 60, 60);
+            font-size: 1.5em;
         }
     }
+   }
+
+   .navExpand{
+    transition: ease-out 1s;
    }
 
    .navSearch{
@@ -126,10 +78,26 @@
             padding: 2.5em 5em;
         }
 
-        aside {
+        .hero{
             position: absolute;
-            top: 3%;
-            left: 35%;
+            top: 10%;
+            left: 15%;
+            //background: rgb(62, 195, 195);
+            height: 30vh;
+            width: 70%;
+
+            h1{
+                font-family:inherit;
+                font-weight: 500;
+                text-align: center;
+                font-size: 5em;
+            }
+        }
+
+       aside {
+            position: absolute;
+            top: 10%;
+            left: 32%;
             transform: translate(-50% -50%);
 
             .navSearch{

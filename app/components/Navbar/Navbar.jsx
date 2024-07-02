@@ -1,11 +1,13 @@
 import styles from "./Navbar.module.scss";
-import { MdLocationPin } from "react-icons/md";
+import { TiWeatherPartlySunny } from "react-icons/ti";
 import { FiSearch } from "react-icons/fi";
 import Darkmode from "../Darkmode/Darkmode";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import gsap from "gsap";
 
 const Navbar = ({ onCity, onCitySubmit }) => {
   const [inputValue, setInputValue] = useState('');
+  const expandRef = useRef();
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -17,19 +19,33 @@ const Navbar = ({ onCity, onCitySubmit }) => {
     onCitySubmit();
   };
 
+  useEffect(() => {
+    gsap.set(expandRef.current, {
+      y: 300,
+    })
+
+  })
+
   return (
     <nav className={styles.navContainer}>
       <section>
         <div className={styles.navLocationContainer}>
-          <MdLocationPin className={styles.navLocation} />
-          Coimbatore
+        <TiWeatherPartlySunny className={styles.navLocation}/>
+          <h3>Forecaster</h3>
         </div>
         <div className={styles.darkmodeContainer}>
           <Darkmode />
         </div>
       </section>
+      {/* hero text animation */}
+
+      <div className={styles.hero}>
+          <h1>Accurate weather updates with Forecaster </h1>
+        </div>
+
+        {/* navbar search */}
        
-      <aside>
+      <aside className={styles.navExpand} ref={expandRef}>
         <div className={styles.navSearch}>
           <input
             className=""
