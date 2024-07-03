@@ -2,26 +2,139 @@
 
 .container {
     position: relative;
-    height: 95vh;
-    width: 90%;
-    background: linear-gradient(to right, #62cff4, #2c67f2);
-    border-top-left-radius: 4em;
-    border-top-right-radius: 4em;
+    height: 100%;
+    width: 100%;
     @include flex;
     flex-direction: column;
+
+    .weatherUp {
+       height: 100vh;
+       width: 100%;
+       //background:rgb(216, 179, 179)0;
+
+       .tempContainer {
+           @include flex;
+           flex-direction: column;
+           gap: 1em;
+           margin: auto;
+           margin-top: 0.6em;
+           border-radius: 2.5em;
+        width: 95%;
+        padding: 1em 1em 2em 1em;
+        @include glass;
+        
+        .temp{
+              color: white;
+              font-size: 5em;
+              font-family: inherit;
+              font-weight: 400;
+
+              > img {
+                height: 100px;
+                width: 100px;
+                position: relative;
+              }
+              
+        }
+
+        .description{
+            text-transform: capitalize;
+            font-size: 2em;
+            font-weight: 400;
+            color: $primary;
+        }
+       }
+
+       .cityContainer{
+        @include flex;
+        @include glass;
+        width: 95%;
+        height: max-content;
+        margin: auto;
+        margin-top: 1em;
+        border-radius: 2.5em;
+        color: $primary;
+        padding: 1em 0em;
+        flex-direction: column;
+        
+
+        .city {
+            text-transform:capitalize;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        .cityUtils{
+            @include flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            padding: 2em 0em;
+
+            .util{
+                @include glass;
+                @include flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                font-size: 1.2em;
+                height: 200px;
+                width: 130px;
+                padding: 0em;
+                border-radius: 1em;
+
+                svg {
+                    font-size: 2em;
+                }
+            }
+        }
+       }
+    }
     
 }
 
 @media (min-width: 768px) {
     .container {
-        position: relative;
-        height: 95vh;
-        width: 90%;
-        background: linear-gradient(to right, #62cff4, #2c67f2);
-        border-top-left-radius: 4em;
-        border-top-right-radius: 4em;
-        @include flex;
+        height: 100%;
+        width: 100%;    
         flex-direction: column;
-        
+
+        .weatherUp {
+            @include flex;
+            align-items: flex-start;
+            flex-direction: row;
+
+            .tempContainer {
+               width: fit-content;
+               margin: 1em 1em;
+               padding: 2em;
+                 
+                .temp {
+                    font-size: 8em;
+
+                    img{
+                        height: 128px;
+                        width: 128px;
+                    }
+                }
+
+                .description{
+                    font-size: 3em;
+                    color: $primary;
+                }
+            }
+
+            .cityContainer{
+                flex: 1;
+                flex-direction: column;
+                margin: 1em 1em;
+
+                .cityUtils{
+                    justify-content: space-evenly;
+                    gap: 3em;
+                    padding: 0.75em 0em;
+                }
+            }
+        }
+  
     }
 }

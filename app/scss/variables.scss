@@ -13,17 +13,24 @@ $dark-secondary: hsl(0, 0%, 100%);
 @mixin light-mode {
   background-color: $primary;
   color: $secondary;
-}
+};
 
 // Mixin for dark mode
 @mixin dark-mode {
   background-color: $dark-primary;
   color: $dark-secondary;
-}
+};
 
 // Mixin for flexbox
 @mixin flex {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+};
+
+//mixin for glass effect
+
+@mixin glass {
+  background: hsla(0, 0%, 97%, .25);
+  backdrop-filter: blur(5px);
+};

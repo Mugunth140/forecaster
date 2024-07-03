@@ -1,12 +1,16 @@
 'use client'
 import Navbar from '@/app/components/Navbar/Navbar';
 import Weather from './components/Weather/Weather';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Home() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+  // useEffect(() => {
+  //   gsap.set
+  // })
 
   const handleCitySubmit = () => {
     if (city) {
