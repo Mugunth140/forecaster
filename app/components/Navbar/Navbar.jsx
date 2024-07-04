@@ -19,39 +19,44 @@ const Navbar = ({ onCity, onCitySubmit }) => {
     onCitySubmit();
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   useEffect(() => {
     gsap.set(expandRef.current, {
       y: 300,
-    })
-
-  })
+    });
+  }, []);
 
   return (
     <nav className={styles.navContainer}>
       <section>
         <div className={styles.navLocationContainer}>
-        <TiWeatherPartlySunny className={styles.navLocation}/>
+          <TiWeatherPartlySunny className={styles.navLocation} />
           <h3>Forecaster</h3>
         </div>
         <div className={styles.darkmodeContainer}>
           <Darkmode />
         </div>
       </section>
+      
       {/* hero text animation */}
-
       <div className={styles.hero}>
-          <h1>Accurate weather updates with Forecaster </h1>
-        </div>
+        <h1>Accurate weather updates with Forecaster</h1>
+      </div>
 
-        {/* navbar search */}
-       
+      {/* navbar search */}
       <aside className={styles.navExpand} ref={expandRef}>
         <div className={styles.navSearch}>
           <input
-            className=""
+            className={styles.navInput}
             type="text"
             value={inputValue}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
             placeholder="search on forecast..."
           />
           <button onClick={handleSubmit}>

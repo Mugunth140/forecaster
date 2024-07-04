@@ -5,7 +5,14 @@ import { FaWind } from "react-icons/fa";
 import { FaTemperatureArrowUp } from "react-icons/fa6";
 
 const Weather = ({ city, weather }) => {
+  if (!weather || !weather.main || !weather.weather || !weather.wind || !weather.sys) {
+    return <p>Loading...</p>;
+  }
+
+
   const temp = Math.round(weather.main.temp);
+  const maxTemp = Math.round(weather.main.temp_max);
+  const windSpeed = Math.round(weather.wind.speed);
 
   return (
     <>
@@ -21,16 +28,28 @@ const Weather = ({ city, weather }) => {
                 width={512}
               />
             </h1>
-            <h1 className={Styles.description}>{weather.weather[0].description}</h1>
+            <h1 className={Styles.description}>
+              {weather.weather[0].main}
+            </h1>
           </div>
           <div className={Styles.cityContainer}>
-            <h1 className={Styles.city}>{city} | {weather.sys.country}</h1>
+            <h1 className={Styles.city}>
+              {city}, {weather.sys.country}
+            </h1>
 
             <div className={Styles.cityUtils}>
-              <div className={Styles.util}>Pressure   <FaWind />               <h1>{weather.main.pressure}</h1></div>
-              <div className={Styles.util}>Humidity  <WiHumidity />            <h1>{weather.main.humidity}</h1></div>
-              <div className={Styles.util}>Max Temp   <FaTemperatureArrowUp /> <h1>{weather.main.temp_max}</h1></div>
-              <div className={Styles.util}>Wind Speed <WiCloudyWindy />        <h1>   {weather.wind.speed}</h1></div>
+              <div className={Styles.util}>
+                Pressure <FaWind /> <h2>{weather.main.pressure}</h2>
+              </div>
+              <div className={Styles.util}>
+                Humidity <WiHumidity /> <h2>{weather.main.humidity}%</h2>
+              </div>
+              <div className={Styles.util}>
+                Max Temp <FaTemperatureArrowUp /> <h2>{maxTemp}°C</h2>
+              </div>
+              <div className={Styles.util}>
+                Wind Speed <WiCloudyWindy /> <h2>{windSpeed} km/h</h2>
+              </div>
             </div>
           </div>
         </section>
