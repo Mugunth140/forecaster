@@ -1,0 +1,77 @@
+// components/WeatherForecast/WeatherForecast.module.scss
+@import '../../scss/variables';
+
+.forecastContainer {  
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: inherit;
+    font-family: inherit;
+    margin-bottom: 0.5em;
+    text-align: center
+}
+
+.forecastItems {
+    @include glass;
+    @include flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+    border-radius: 2.5em;
+    z-index: 1;
+  }
+  
+  .forecastItem {
+    //@include glass;
+    @include flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-direction: column;
+    width: 135px;
+    height: 200px;
+    padding: 1em;
+    border-radius: 1em;
+    background: $dark-secondary;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    
+    p {
+        font-size: 1.2rem;
+        color: $secondary;
+        font-family: inherit;
+    }
+    
+    .weatherIcon {
+        width: 50px;
+        height: 50px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .forecastContainer {
+    height: 50vh;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .nextThreeHours, .fiveDays {
+        width: auto;
+
+      h2 {
+        text-align: center;
+      }
+    }
+
+    .forecastItems {
+        height: 90%;
+        flex-direction: row;
+        padding : 0em 2em;
+      gap: 1em;
+    }
+  }
+}

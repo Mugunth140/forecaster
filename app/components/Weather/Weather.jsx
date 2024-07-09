@@ -1,14 +1,15 @@
+import React from "react";
 import Image from "next/image";
 import Styles from "./Weather.module.scss";
 import { WiHumidity, WiCloudyWindy } from "react-icons/wi";
 import { FaWind } from "react-icons/fa";
 import { FaTemperatureArrowUp } from "react-icons/fa6";
+import Forecast from "../Forecast/Forecast";
 
-const Weather = ({ city, weather }) => {
+const Weather = ({ city, weather, forecast }) => {
   if (!weather || !weather.main || !weather.weather || !weather.wind || !weather.sys) {
     return <p>Loading...</p>;
   }
-
 
   const temp = Math.round(weather.main.temp);
   const maxTemp = Math.round(weather.main.temp_max);
@@ -55,7 +56,7 @@ const Weather = ({ city, weather }) => {
         </section>
 
         <section className={Styles.weatherDown}>
-          <p>Description: {city}</p>
+          <Forecast forecast={forecast} />
         </section>
       </div>
     </>

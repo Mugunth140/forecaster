@@ -16,7 +16,9 @@ const Navbar = ({ onCity, onCitySubmit }) => {
   };
 
   const handleSubmit = () => {
-    onCitySubmit();
+    if (typeof onCitySubmit === 'function') {
+      onCitySubmit();
+    }
   };
 
   const handleKeyPress = (event) => {

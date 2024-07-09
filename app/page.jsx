@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Navbar from '@/app/components/Navbar/Navbar';
 import Weather from './components/Weather/Weather';
-import { useEffect, useState, useRef, useCallback } from "react";
 import debounce from 'lodash.debounce';
 import gsap from 'gsap';
 
@@ -26,9 +25,9 @@ function Home() {
   }, []);
 
   const handleCityChange = useCallback(
-    debounce((cityData) => {
+    (cityData) => {
       setCity(cityData);
-    }, 500),
+    },
     []
   );
 
@@ -88,19 +87,16 @@ function Home() {
     if (lat && lon) {
       getForecast();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lon]);
 
   return (
     <>
       <Navbar onCity={handleCityChange} onCitySubmit={getCurrent} />
       <div ref={containerRef} className="weatherContainer">
-        {loading ? (
-          <div className="weatherLoader">Loading...</div>
-        ) : error ? (
-          <div className="weatherError">{error}</div>
-        ) : (
-          weather && <Weather city={city} weather={weather} />
-        )}
+        {loading && <p className="weatherLoader">Loading...</p>}
+        {error && <p className="weatherError">{error}</p>}
+        {weather && <Weather city={city} weather={weather} forecast={forecast} />}
       </div>
     </>
   );

@@ -2,7 +2,7 @@
 
 .container {
     position: relative;
-    height: 100%;
+    height: auto;
     width: 100%;
     @include flex;
     flex-direction: column;
@@ -10,7 +10,6 @@
     .weatherUp {
        height: 100vh;
        width: 100%;
-       //background:rgb(216, 179, 179)0;
 
        .tempContainer {
            @include flex;
@@ -70,7 +69,7 @@
             flex-wrap: wrap;
             gap: 2em;
             padding: 2em 0em;
-
+            
             .util{
                 @include glass;
                 @include flex;
@@ -81,6 +80,7 @@
                 width: 130px;
                 padding: 0em;
                 border-radius: 1em;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
                 svg {
                     font-size: 2em;
@@ -138,6 +138,11 @@
                     padding: 0.75em 0em;
                 }
             }
+        }
+
+        .weatherDown{
+            width: 100%;
+            height: 50%;
         }
   
     }
