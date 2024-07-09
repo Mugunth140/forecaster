@@ -63,7 +63,7 @@ function Home() {
     if (lat && lon) {
       setLoading(true);
       setError(null);
-      const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
       try {
         const response = await fetch(url);
