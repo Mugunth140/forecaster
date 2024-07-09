@@ -52,8 +52,7 @@ body {
   }
   
   .weatherContainer{
-    // @include flex;
-    height: 100vh;
+    height: 100%;
     width: 90%;
     margin: auto;
     position: relative;
@@ -61,5 +60,11 @@ body {
     border-top-right-radius: 3rem;
     background: linear-gradient(to right, #62cff4, #2c67f2);
     z-index: -1;
+  }
+
+  @media(min-width: 768px) {
+    .weatherContainer{
+      height: 100vh;
+    }
   }
 

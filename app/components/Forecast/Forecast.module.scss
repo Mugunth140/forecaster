@@ -10,7 +10,7 @@
   h2 {
     font-size: 1.5rem;
     font-weight: 400;
-    color: inherit;
+    color: $primary;
     font-family: inherit;
     margin-bottom: 0.5em;
     text-align: center
@@ -27,7 +27,7 @@
   }
   
   .forecastItem {
-    //@include glass;
+    @include glass;
     @include flex;
     justify-content: space-around;
     text-align: center;
@@ -36,13 +36,12 @@
     height: 200px;
     padding: 1em;
     border-radius: 1em;
-    background: $dark-secondary;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 5;
     
     p {
         font-size: 1.2rem;
-        color: $secondary;
+        color: $primary;
         font-family: inherit;
     }
     
@@ -71,7 +70,7 @@
         height: 90%;
         flex-direction: row;
         padding : 0em 2em;
-      gap: 1em;
+        gap: 1em;
     }
   }
 }
