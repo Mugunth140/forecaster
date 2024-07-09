@@ -6,14 +6,41 @@ import { FaWind } from "react-icons/fa";
 import { FaTemperatureArrowUp } from "react-icons/fa6";
 import Forecast from "../Forecast/Forecast";
 
+//weather images
+import { cloudyImage, sunnyImage, rainyImage, snowyImage } from "../../../public/images";
+
+
+
 const Weather = ({ city, weather, forecast }) => {
   if (!weather || !weather.main || !weather.weather || !weather.wind || !weather.sys) {
     return <p>Loading...</p>;
   }
-
+ 
   const temp = Math.round(weather.main.temp);
   const maxTemp = Math.round(weather.main.temp_max);
   const windSpeed = Math.round(weather.wind.speed);
+
+  let weatherImage;
+  switch (weather.weather[0].main.toLowerCase()) {
+    case "clouds":
+      weatherImage = cloudyImage;
+      break;
+    case "clear":
+      weatherImage = sunnyImage;
+      break;
+    case "rain":
+      weatherImage = rainyImage;
+      break;
+    case "snow":
+      weatherImage = snowyImage;
+      break;
+    case "wind":
+      weatherImage = windyImage;
+      break;
+    default:
+      weatherImage = sunnyImage; // Default to sunny image if no match
+      break;
+  }
 
   return (
     <>
