@@ -1,11 +1,13 @@
-'use client'
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import Navbar from '@/app/components/Navbar/Navbar';
-import Weather from './components/Weather/Weather';
-import debounce from 'lodash.debounce';
-import gsap from 'gsap';
+"use client";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import Loader from "./components/Loader/Loader";
+import Navbar from "@/app/components/Navbar/Navbar";
+import Weather from "./components/Weather/Weather";
+import debounce from "lodash.debounce";
+import gsap from "gsap";
 
 function Home() {
+  const [preLoader, setPreLoader] = useState(true);
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [city, setCity] = useState("");
@@ -17,26 +19,32 @@ function Home() {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   useEffect(() => {
+    // Hide preloader after 3 seconds
+    const timer = setTimeout(() => {
+      setPreLoader(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     gsap.set(".weatherContainer", {
       duration: 200,
       y: 400,
-      ease: 'power3'
+      ease: "power3",
     });
-  }, []);
+  })
 
-  const handleCityChange = useCallback(
-    (cityData) => {
-      setCity(cityData);
-    },
-    []
-  );
+  const handleCityChange = useCallback((cityData) => {
+    setCity(cityData);
+  }, []);
 
   const getCurrent = async () => {
     if (city) {
       setLoading(true);
       setError(null);
       const currentUrl = `https://api.openweathermap.org/data/2.5/weather?&q=${city}&units=metric&appid=${apiKey}`;
-      
+
       try {
         const response = await fetch(currentUrl);
         const data = await response.json();
@@ -68,7 +76,7 @@ function Home() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (response.ok) {
           setForecast(data);
         } else {
@@ -87,17 +95,25 @@ function Home() {
     if (lat && lon) {
       getForecast();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lon]);
 
   return (
     <>
-      <Navbar onCity={handleCityChange} onCitySubmit={getCurrent} />
-      <div ref={containerRef} className="weatherContainer">
-        {loading && <p className="weatherLoader">Loading...</p>}
-        {error && <p className="weatherError">{error}</p>}
-        {weather && <Weather city={city} weather={weather} forecast={forecast} />}
-      </div>
+      {preLoader ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar onCity={handleCityChange} onCitySubmit={getCurrent} />
+          <div ref={containerRef} className="weatherContainer">
+            {loading && <p className="weatherLoader">Loading...</p>}
+            {error && <p className="weatherError">{error}</p>}
+            {weather && (
+              <Weather city={city} weather={weather} forecast={forecast} />
+            )}
+          </div>
+        </>
+      )}
     </>
   );
 }
